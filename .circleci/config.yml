@@ -1,15 +1,12 @@
 default: &defaults
   parallelism: 1
-  working_directory: ~/my-project
+  working_directory: ~/LocustDemo
 
-k6_performance_tests: &k6_performance_tests
+performance_tests: &performance_tests
   run:
-    name: Running k6 tests
-    # Download the k6 docker image. Alternatively, download the k6 release binary
-    # Mount a volume to access the folder and run the test
+    name: Running tests
     command: |
-      docker pull loadimpact/k6:latest
-      docker run -i -v $HOME/my-project:/ci/ loadimpact/k6:latest run /ci/loadtests/performance-test.js
+      ./test_automation.sh
 
 version: 2
 jobs:
@@ -19,7 +16,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - *k6_performance_tests
+      - *performance_tests
 
 workflows:
   version: 2
