@@ -19,6 +19,9 @@ jobs:
       - checkout
       - *performance_tests
 
+orbs:
+  python: circleci/python@1.0.0
+
 workflows:
   version: 2
   build-and-test:
