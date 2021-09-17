@@ -6,6 +6,7 @@ performance_tests: &performance_tests
   run:
     name: Running tests
     command: |
+      chmod +x test_automation.sh
       ./test_automation.sh
 
 version: 2
