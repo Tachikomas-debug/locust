@@ -21,6 +21,7 @@ jobs:
           command: |
             pyenv versions
             pyenv global 3.7.0
+      - *performance_tests
   run_performance_tests:
     <<: *defaults
     # Use `machine` executor because the Docker executor cannot mount volumes
@@ -37,4 +38,4 @@ workflows:
   build-and-test:
     jobs:
       - build
-      - run_performance_tests
+      #- run_performance_tests
