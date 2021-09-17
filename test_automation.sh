@@ -4,7 +4,7 @@ if [ -d "myenv" ];
     source myenv/bin/activate && pip install -r requirements.txt
   else
     echo "Creating Virtual Environment"
-    python3 -m venv myenv
+    python -m venv myenv
     source myenv/bin/activate && pip install -r requirements.txt
 fi
 
