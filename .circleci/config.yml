@@ -11,6 +11,16 @@ performance_tests: &performance_tests
 
 version: 2
 jobs:
+  build:
+    machine:
+      image: circleci/classic:201808-01
+    steps:
+      - checkout
+      - run:
+          name: "Switch to Python v3.7"
+          command: |
+            pyenv versions
+            pyenv global 3.7.0
   run_performance_tests:
     <<: *defaults
     # Use `machine` executor because the Docker executor cannot mount volumes
@@ -19,8 +29,8 @@ jobs:
       - checkout
       - *performance_tests
 
-orbs:
-  python: circleci/python@1.0.0
+#orbs:
+#  python: circleci/python@1.0.0
 
 workflows:
   version: 2
